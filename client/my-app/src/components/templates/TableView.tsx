@@ -5,18 +5,14 @@ import { fatchData } from '../../api/api'
 import ReduxStorage from '../../reducer/dispatch'
 
 export default function TableView(props: any) {
- 
-    const { controllerName, fieldNames, data } = props 
+
+    const { controllerName, fieldNames, data } = props
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        fatchData(controllerName).then(data => ReduxStorage(data, dispatch))
+    useEffect(() => { 
+        fatchData(controllerName).then(data => ReduxStorage(data, dispatch, controllerName))
     }, [])
-
-
-    console.log(controllerName)
-    console.log(fieldNames)
-    console.log(data)
+ 
 
     return (
         <div>
@@ -26,9 +22,8 @@ export default function TableView(props: any) {
                         <th>#</th>
 
                         {
-                            fieldNames.map((fieldName:string[]) => <th>{fieldName}</th>)
-                        }
-
+                            fieldNames?.map((fieldName: string[]) => <th>{fieldName}</th>)
+                        } 
 
                     </tr>
                 </thead>
@@ -39,7 +34,9 @@ export default function TableView(props: any) {
                             <tr key={schema._id}>
                                 <td>{index + 1}</td>
 
-                                <td> {schema[fieldNames[index]]}</td>
+                                {
+                                    fieldNames?.map((fieldName: any) => <td>{schema[fieldName]}</td>)
+                                } 
 
                             </tr>
 

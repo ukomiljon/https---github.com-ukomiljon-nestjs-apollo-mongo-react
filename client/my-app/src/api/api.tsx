@@ -8,7 +8,7 @@ const createApiUrl = (controllerName: any) => {
 
 export const fatchData = (controllerName: string) => {
     return axios.get(createApiUrl(controllerName)).
-        then(response => {
+        then(response => { 
             return response.data
         })
 }

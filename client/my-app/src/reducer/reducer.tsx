@@ -1,20 +1,30 @@
 
 
 interface reactBI {
-    datasources: any[]
+    datasources: any[],
+    reports:any[]
 }
 
 const initReactBI: reactBI = {
-    datasources: []
+    datasources: [],
+    reports:[]
 }
 
 export default function reducer(state = initReactBI, action: any) {
 
     if (action.type == 'ADD_DATASOURCE') {
-        console.log("ADD_DATASOURCE", action.datasource)
+        
         return {
             ...state,
             datasources: [...state.datasources, action.datasource],
+        }
+    }
+
+    if (action.type == 'ADD_REPORT') {
+        
+        return {
+            ...state,
+            reports: [...state.reports, action.report],
         }
     }
  
