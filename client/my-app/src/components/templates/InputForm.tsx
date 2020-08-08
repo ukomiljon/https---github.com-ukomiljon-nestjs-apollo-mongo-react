@@ -4,12 +4,12 @@ import { postData } from '../../api/api'
 
 export default function InputForm(props: any) {
 
-    const { controlName, fieldNames } = props
+    const { controllerName, fieldNames } = props
 
     const [data, setData] = useState({})
 
     const submitData = (e: any) => {
-        postData(controlName, data)
+        postData(controllerName, data)
     }
 
     const onChangeInput = (e: any) => {
@@ -17,7 +17,7 @@ export default function InputForm(props: any) {
         setData(
             {
                 ...data, // const json = {name:'abc', age:12}, {...json} == {name:'abc', age:12}
-                [e.target.id]: e.target.value // {...json, age:20} == {name:'abc', age:20}
+                [e.target.id]: e.target.value // {...json, age:12} == {name:'abc', age:20}
             })
 
         // console.log(data)
@@ -32,7 +32,6 @@ export default function InputForm(props: any) {
             <Form>
 
                 {
-
                     fieldNames.map((fieldName: any) => {
 
                         let inputType = "text"

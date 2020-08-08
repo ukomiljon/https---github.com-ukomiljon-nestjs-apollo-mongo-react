@@ -10,8 +10,8 @@ import InputForm from './templates/InputForm';
 import TableView from './templates/TableView';
 
 
-export default function Datasources() { 
- 
+export default function Datasources() {
+
     const fieldNames = [
         "name",
         "connection",
@@ -21,10 +21,13 @@ export default function Datasources() {
         "databaseName"
     ]
 
+    const controllerName = "datasources"
+    const datasources = useSelector((state: any) => state.datasources)
+
     return (
-        <div> 
-            <InputForm controlName={"datasources"} fieldNames = {fieldNames}  />
-            <TableView  />
+        <div>
+            <InputForm controllerName={controllerName} fieldNames={fieldNames}   />
+            <TableView controllerName={controllerName} fieldNames={fieldNames} data={datasources} />
         </div>
     )
 }
