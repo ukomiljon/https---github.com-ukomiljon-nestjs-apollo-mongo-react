@@ -13,6 +13,16 @@ export const fatchData = (controllerName: string) => {
         })
 }
 
+//`http://localhost:3000/users/${id}`
+export const deleteData = (controllerName: string, id:any) => {
+    return axios.delete(createApiUrl(controllerName)+`/${id}`).
+        then(response => { 
+            return response.data
+        })
+}
+
+
+
 export const postData = (controllerName: string, data: any) => {
     axios.post(createApiUrl(controllerName), data)
         .then(function (response) {

@@ -27,7 +27,7 @@ export class ReportsService {
         return await this.reportModule.findByIdAndUpdate(id, report)
     }
 
-    async delete(id: string): Promise<any> {
+    async delete(id: string): Promise<any> { 
         return await this.reportModule.findByIdAndRemove(id)
     }
 }
