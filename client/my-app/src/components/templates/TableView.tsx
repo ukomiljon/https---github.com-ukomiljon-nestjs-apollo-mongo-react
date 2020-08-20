@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Form, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteData, fatchData } from '../../api/api'
+import { deleteData, fetchData } from '../../api/api'
 import ReduxStorage from '../../reducer/dispatch'
+import saveToRedux from '../../reducer/dispatch'
 
 export default function TableView(props: any) {
 
@@ -10,14 +11,15 @@ export default function TableView(props: any) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        fatchData(controllerName).then(data => ReduxStorage(data, dispatch, controllerName))
+        fetchData(controllerName).then(dataFromServer => saveToRedux(dataFromServer, dispatch, controllerName))
     }, [])
 
 
     const deleteRow = (id: any) => {
+        
         deleteData(controllerName, id)
-            .then(() => fatchData(controllerName))
-            .then(data => ReduxStorage(data, dispatch, controllerName))
+            .then(() => fetchData(controllerName))
+            .then(data => saveToRedux(data, dispatch, controllerName))
     }
 
 

@@ -6,7 +6,7 @@ const createApiUrl = (controllerName: any) => {
     return API_URL + controllerName
 }
 
-export const fatchData = (controllerName: string) => {
+export const fetchData = (controllerName: string) => {
     return axios.get(createApiUrl(controllerName)).
         then(response => { 
             return response.data

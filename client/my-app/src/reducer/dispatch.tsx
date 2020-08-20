@@ -11,7 +11,7 @@ export function cleanReports(dispatch: any) {
   dispatch({ type: 'CLEAN_REPORT' })
 }
 
-export default function ReduxStorage(data: any, dispatch: any, controllerName: ControllerNames) {
+export default function saveToRedux(data: any, dispatch: any, controllerName: ControllerNames) {
 
   switch (controllerName) {
     case ControllerNames.Datasource: 
