@@ -2,15 +2,26 @@
 
 interface reactBI {
     datasources: any[],
-    reports: any[]
+    reports: any[],
+    editFormState:false,
+    controllerNameState:string
+   
 }
 
 const initReactBI: reactBI = {
     datasources: [],
-    reports: []
+    reports: [],
+    editFormState:false,
+    controllerNameState:""
 }
 
 export default function reducer(state = initReactBI, action: any) {
+
+    if(action.type ==="EDIT_FORM_STATE")
+    state.editFormState = action.data
+
+    if(action.type ==="CONTROL_NAME_STATE")
+    state.controllerNameState = action.data
 
     if (action.type == 'CLEAN_DATASOURCE') {
         state.datasources = []

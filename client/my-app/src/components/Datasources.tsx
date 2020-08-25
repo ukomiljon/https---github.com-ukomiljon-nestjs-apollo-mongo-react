@@ -8,6 +8,7 @@ import { fetchData, postData } from '../api/api';
 import ReduxStorage from '../reducer/dispatch';
 import InputForm from './templates/InputForm';
 import TableView from './templates/TableView';
+import { ControllerNames } from '../controllerNames/ControllerNames';
 
 
 export default function Datasources() {
@@ -20,14 +21,13 @@ export default function Datasources() {
         "password",
         "databaseName"
     ]
-
-    const controllerName = "datasources"
+ 
     const datasources = useSelector((state: any) => state.datasources)
 
     return (
         <div>
-            <InputForm controllerName={controllerName} fieldNames={fieldNames}   />
-            <TableView controllerName={controllerName} fieldNames={fieldNames} data={datasources} />
+            <InputForm controllerName={ControllerNames.Datasource} fieldNames={fieldNames}   />
+            <TableView controllerName={ControllerNames.Datasource} fieldNames={fieldNames} data={datasources} />
         </div>
     )
 }

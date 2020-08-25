@@ -4,20 +4,60 @@ import './App.css';
 
 import { createStore } from 'redux'
 import reducer from './reducer/reducer';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import Reports from './components/Reports';
+import InputForm from './components/templates/InputForm';
+import { ControllerNames } from './controllerNames/ControllerNames';
 
 
-const storage = createStore(reducer)
 
 function App() {
+
+  let datasourcesFieldNames = [
+    "name",
+    "connection",
+    "port",
+    "user",
+    "password",
+    "databaseName"
+  ]
+
+  let reportFieldNames = [
+    "title",
+    "type"
+]
+
+
+  const editFormState = useSelector((state: any) => state.editFormState)
+  const controllerNameState =  useSelector((state: any) => state.controllerNameState)
+
+  let fieldNames;
+  switch(controllerNameState){
+    case ControllerNames.Datasource:
+      fieldNames=datasourcesFieldNames
+      break;
+      case ControllerNames.Report:
+        fieldNames=reportFieldNames
+      break;
+  }
+
+  let view = <div>  <InputForm controllerName={controllerNameState} fieldNames={fieldNames} /></div>
+
+  if (!editFormState) {
+    view = <div>
+      <Datasources />
+      <Reports />
+    </div>
+  }
+
   return (
-    <Provider store={storage}>
+    
       <div className="App">
-        <Datasources />
-        <Reports/>
+        {
+          view
+        }
       </div>
-    </Provider>
+     
   );
 }
 

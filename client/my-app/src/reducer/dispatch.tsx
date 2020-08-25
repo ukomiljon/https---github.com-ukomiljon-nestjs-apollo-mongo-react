@@ -11,6 +11,16 @@ export function cleanReports(dispatch: any) {
   dispatch({ type: 'CLEAN_REPORT' })
 }
 
+
+export function updateEditFormState(data: any, dispatch: any){
+
+  dispatch({ type: 'EDIT_FORM_STATE',  data })
+}
+
+export function  updateControllerNameState(data: any, dispatch: any){
+  dispatch({ type: 'CONTROL_NAME_STATE',  data }) 
+}
+
 export default function saveToRedux(data: any, dispatch: any, controllerName: ControllerNames) {
 
   switch (controllerName) {

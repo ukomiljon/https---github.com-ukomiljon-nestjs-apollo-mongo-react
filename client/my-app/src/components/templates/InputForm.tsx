@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { postData, fetchData } from '../../api/api' 
 import { useDispatch } from 'react-redux'
-import saveToRedux from '../../reducer/dispatch'
+import saveToRedux, { updateEditFormState } from '../../reducer/dispatch'
 
 export default function InputForm(props: any) {
 
@@ -19,7 +19,9 @@ export default function InputForm(props: any) {
         postData(controllerName, data)
 
         fetchData(controllerName)
-            .then(data => saveToRedux(data, dispatch, controllerName))
+            .then(dataFromServer => saveToRedux(dataFromServer, dispatch, controllerName))
+
+            updateEditFormState(false,dispatch) 
     }
 
     const onChangeInput = (e: any) => {

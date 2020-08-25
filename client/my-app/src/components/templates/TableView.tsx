@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Form, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteData, fetchData } from '../../api/api'
-import ReduxStorage from '../../reducer/dispatch'
+import ReduxStorage, { updateControllerNameState, updateEditFormState } from '../../reducer/dispatch'
 import saveToRedux from '../../reducer/dispatch'
 
 export default function TableView(props: any) {
@@ -22,6 +22,10 @@ export default function TableView(props: any) {
             .then(data => saveToRedux(data, dispatch, controllerName))
     }
 
+    const editHandler=(id:any)=>{
+        updateEditFormState(true,dispatch)
+        updateControllerNameState(controllerName, dispatch) 
+    }
 
     return (
         <div>
@@ -54,7 +58,7 @@ export default function TableView(props: any) {
 
                                 {  
                                     <td>
-                                     <button className="btn btn-secondary btn-sm" >  Change </button> &nbsp;
+                                     <button className="btn btn-secondary btn-sm"   onClick={(id: any) => editHandler(schema._id)} >  Change </button> &nbsp;
                                      <button className="btn btn-danger btn-sm" type="submit"  onClick={(id: any) => deleteRow(schema._id)}>  Delete </button>
                                     </td>
                                 }
