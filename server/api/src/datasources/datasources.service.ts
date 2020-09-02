@@ -20,12 +20,12 @@ export class DatasourcesService {
         return await this.datasourceModule.findById(id)
     }
 
-    async create(report: any): Promise<any> {
-        return await new this.datasourceModule(report).save()
+    async create(datasource: any): Promise<any> {
+        return await new this.datasourceModule(datasource).save()
     }
 
-    async update(id: string, report: any): Promise<any> {
-        return await this.datasourceModule.findByIdAndUpdate(id, report)
+    async update(id: string, datasource: any): Promise<any> {
+        return await this.datasourceModule.findByIdAndUpdate(id, datasource)
     }
 
     async delete(id: string): Promise<any> {

@@ -30,6 +30,7 @@ function App() {
 
   const editFormState = useSelector((state: any) => state.editFormState)
   const controllerNameState =  useSelector((state: any) => state.controllerNameState)
+  const editSchemaId=useSelector((state: any) => state.editSchemaById)
 
   let fieldNames;
   switch(controllerNameState){
@@ -41,7 +42,7 @@ function App() {
       break;
   }
 
-  let view = <div>  <InputForm controllerName={controllerNameState} fieldNames={fieldNames} /></div>
+  let view = <div>  <InputForm controllerName={controllerNameState} fieldNames={fieldNames} editSchemaId={editSchemaId} /></div>
 
   if (!editFormState) {
     view = <div>

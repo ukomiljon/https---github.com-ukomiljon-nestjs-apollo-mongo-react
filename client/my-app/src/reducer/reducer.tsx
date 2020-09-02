@@ -1,38 +1,41 @@
-
+import { ActionType } from './actionType'
 
 interface reactBI {
     datasources: any[],
     reports: any[],
-    editFormState:false,
-    controllerNameState:string
-   
+    editFormState: false,
+    controllerNameState: string,
+    editSchemaById: string
 }
 
 const initReactBI: reactBI = {
     datasources: [],
     reports: [],
-    editFormState:false,
-    controllerNameState:""
+    editFormState: false,
+    controllerNameState: "",
+    editSchemaById: "",
 }
 
 export default function reducer(state = initReactBI, action: any) {
 
-    if(action.type ==="EDIT_FORM_STATE")
-    state.editFormState = action.data
+    if (action.type === ActionType.EDIT_FORM_STATE)
+        state.editFormState = action.data
 
-    if(action.type ==="CONTROL_NAME_STATE")
-    state.controllerNameState = action.data
+    if (action.type === ActionType.CONTROL_NAME_STATE)
+        state.controllerNameState = action.data
 
-    if (action.type == 'CLEAN_DATASOURCE') {
+    if (action.type === ActionType.UPDATE_EDIT_SCHEMA_BY_ID)
+        state.editSchemaById = action.data
+
+    if (action.type == ActionType.CLEAN_DATASOURCE) {
         state.datasources = []
     }
 
-
-    if (action.type == 'CLEAN_REPORT') {
+    if (action.type == ActionType.CLEAN_REPORT) {
         state.reports = []
     }
 
-    if (action.type == 'ADD_DATASOURCE') {
+    if (action.type == ActionType.ADD_DATASOURCE) {
 
         return {
             ...state,
@@ -40,7 +43,7 @@ export default function reducer(state = initReactBI, action: any) {
         }
     }
 
-    if (action.type == 'ADD_REPORT') {
+    if (action.type == ActionType.ADD_REPORT) {
 
         return {
             ...state,

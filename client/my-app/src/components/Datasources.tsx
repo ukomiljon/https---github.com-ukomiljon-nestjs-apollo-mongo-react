@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { Button, Col, Form, Row, Table } from 'react-bootstrap'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { fetchData, postData } from '../api/api';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import ReduxStorage from '../reducer/dispatch';
 import InputForm from './templates/InputForm';
 import TableView from './templates/TableView';
@@ -26,7 +25,7 @@ export default function Datasources() {
 
     return (
         <div>
-            <InputForm controllerName={ControllerNames.Datasource} fieldNames={fieldNames}   />
+            <InputForm controllerName={ControllerNames.Datasource} fieldNames={fieldNames} data={datasources}   />
             <TableView controllerName={ControllerNames.Datasource} fieldNames={fieldNames} data={datasources} />
         </div>
     )
