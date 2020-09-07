@@ -21,8 +21,7 @@ export class DatasourcesController {
     }
 
     @Post()
-    async create(@Body() datasource: DatasourceDto): Promise<any> {
-        console.log(datasource)
+    async create(@Body() datasource: DatasourceDto): Promise<any> {        
         return await this.datasourcesService.create(datasource)
     }
 
